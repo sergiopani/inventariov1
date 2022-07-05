@@ -1,5 +1,7 @@
 //const { getProduct } = require("../../../controllers/product");
 
+//import axios from "axios";
+
 const app = new Vue({
     el: "#app",
     data: {
@@ -110,6 +112,17 @@ const app = new Vue({
             this.selectedFactura.numero = factura.numero;
             this.getProducts();
         },
+        getProducts: async function(){
+            try{
+                const response = await axios("../data/products.json")
+                const res = response.data;
+                this.articulos = res;
+                console.log(this.articulos);
+            }catch(err){
+                console.log(err);
+            }
+        },
+        /*
         getProducts() {
             //const url = "http://localhost:8080/kriterOMNI/KriterRS004/getOP?centro=" + this.currentFactura.centro + "&tipo=" + this.currentFactura.tipo
             //    + "&serie=" + this.currentFactura.serie + "&numero=" + this.currentFactura.numero;
@@ -122,13 +135,27 @@ const app = new Vue({
 
 
         },
+        */
 
+        getFacturas: async function(){
+            try{
+                const response = await axios("../data/facturas.json")
+                const res = response.data;
+                this.facturas = res;
+                console.log(this.facturas)
+            }catch(err){
+                console.log(err);
+            }
+        }
+        /*
         getFacturas() {
             fetch("../data/facturas.json")
                 .then((res) => res.json())
                 .then((data) => ((this.facturas = data), console.log(this.facturas)))
                 .catch((err) => console.log(err.message));
         },
+        */
+
     },
 });
 
