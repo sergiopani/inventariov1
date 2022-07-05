@@ -1,0 +1,37 @@
+[
+    {
+        "centro": "0",
+        "tipo": 16,
+        "serie": "PA",
+        "numero": 14,
+        "nomfiscli": "Star Quads SL"
+    },
+    {
+        "centro": "0",
+        "tipo": 16,
+        "serie": "PB",
+        "numero": 28819,
+        "nomfiscli": "BEATS STARS SL"
+    },
+    {
+        "centro": "0",
+        "tipo": 16,
+        "serie": "PC",
+        "numero": 28819,
+        "nomfiscli": "HOLA TODOS SL"
+    },
+    {
+        "centro": "0",
+        "tipo": 16,
+        "serie": "PD",
+        "numero": 28819,
+        "nomfiscli": "NEW ORDER SL"
+    },
+    {
+        "centro": "0",
+        "tipo": 16,
+        "serie": "PF",
+        "numero": 14,
+        "nomfiscli": "Star Quads SL"
+    }
+]
