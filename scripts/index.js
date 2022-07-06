@@ -2,7 +2,7 @@
 
 //import axios from "axios";
 
-const app = new Vue({
+ new Vue({
     el: "#app",
     data: {
         //Array de articulos que parseamos desde el fichero json
@@ -14,7 +14,7 @@ const app = new Vue({
         //Objeto que guarda la empresa que esta selecionada en el select
         selectedFactura: {
             id: '',
-            nombre: '',
+            nomfiscli: '',
             serie: '',
             tipo: '',
             centro: '',
@@ -29,11 +29,12 @@ const app = new Vue({
     },
     /*Metodos que se ejecutan al iniciar la pagina*/
     created() {
-        this.getFacturas();
-        console.log(this.facturas[0]);
-        setTimeout(() => {
-            this.setDefault(this.facturas[0])
-        }, 500);
+
+        const getfacturasExecution = new Promise((resolve, reject) => {
+            resolve (this.getFacturas());
+        });
+        getfacturasExecution
+            .then(value => {this.setDefault(this.facturas[0]) })
 
     },
     methods: {
@@ -72,22 +73,13 @@ const app = new Vue({
             this.toProduce[index] = null;
         },
         showProduction: function () {
+
             //Eliminar las posiciones que son nulas
             const results = this.toProduce.filter(element => {
                 return element !== null;
             });
 
             console.log(results);
-        },
-        setSerieByName: function (nombre) {
-
-            //Recorremos el array mirando que empresa tiene el nombre del parametro y hacemos un set del serie
-
-
-            //this.setDefault(empresa);
-
-
-            //console.log(this.currentFactura.serie)
         },
         filter: function (a) {
             /*console.log(a.serie + " "+ a.tipo + " " + a.centro + " es igual a ->" + this.currentEmpresa.serie + " " + this.currentEmpresa.tipo + " " + this.currentEmpresa.centro)
@@ -104,12 +96,15 @@ const app = new Vue({
             this.setDefault(facturaObject);
         },
         setDefault: function (factura) {
-            this.selectedFactura.id = factura.serie + factura.tipo + factura.centro + factura.numero;
+            /*this.selectedFactura.id = factura.serie + factura.tipo + factura.centro + factura.numero;
             this.selectedFactura.nombre = factura.nomfiscli;
             this.selectedFactura.serie = factura.serie;
             this.selectedFactura.tipo = factura.tipo;
             this.selectedFactura.centro = factura.centro;
-            this.selectedFactura.numero = factura.numero;
+            this.selectedFactura.numero = factura.numero;*/
+            this.selectedFactura = factura;
+            console.log("pasooptin ")
+            console.log(this.facturas)
             this.getProducts();
         },
         getProducts: async function(){
@@ -160,18 +155,3 @@ const app = new Vue({
 });
 
 
-/*METODOS DE GETTERS*/
-
-/*
-     getProductos() {
-       fetch("/products")
-         .then((res) => res.json())
-         .then((data) => {
-           console.log(data);
-           this.productos = data.productos;
-           console.log(this.productos);
-         })
-         .catch((err) => console.log(err.message));
-     },
-   },
-   */

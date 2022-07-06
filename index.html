@@ -37,7 +37,8 @@
             <select class="form-select bg-light text-center w-100 text-uppercase" name="empresas" id="empresas"
                     v-model="selectedFactura" v-on:change="setSelected(selectedFactura)">
                 <!--Ponemos como value la id de cada factura-->
-                <option v-for="factura in facturas" :key="factura.id" :value="factura">
+                <option v-for="factura in facturas" :key="factura.id" :value="factura" >
+                    <!--SI la ID es 0 o 1 que se añada al option que esta selecionado-->
                     {{factura.serie}} {{factura.numero}} {{factura.nomfiscli}}
                 </option>
             </select>
