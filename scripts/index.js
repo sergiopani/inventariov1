@@ -2,7 +2,7 @@
 
 //import axios from "axios";
 
- new Vue({
+new Vue({
     el: "#app",
     data: {
         //Array de articulos que parseamos desde el fichero json
@@ -31,10 +31,12 @@
     created() {
 
         const getfacturasExecution = new Promise((resolve, reject) => {
-            resolve (this.getFacturas());
+            resolve(this.getFacturas());
         });
         getfacturasExecution
-            .then(value => {this.setDefault(this.facturas[0]) })
+            .then(value => {
+                this.setDefault(this.facturas[0])
+            })
 
     },
     methods: {
@@ -79,7 +81,15 @@
                 return element !== null;
             });
 
-            console.log(results);
+            //Eliminar de la array toProduce los valores que enviamos a post
+            results.forEach((element, index) => {
+                if(element.id === this.toProduce[index].id){
+                    //Entonces eliminamos el objecto
+                    this.toProduce[index] = null;
+                }
+            });
+            //Post de la array de products
+            this.postProducts(results);
         },
         filter: function (a) {
             /*console.log(a.serie + " "+ a.tipo + " " + a.centro + " es igual a ->" + this.currentEmpresa.serie + " " + this.currentEmpresa.tipo + " " + this.currentEmpresa.centro)
@@ -107,9 +117,25 @@
             console.log(this.facturas)
             this.getProducts();
         },
-        getProducts: async function(){
+        postProducts: async function(results){
+            const productos = results;
+
+            const url = "http://localhost:8080/KriterOMNI/KriterRS004/closeOP";
             try{
-                const response = await axios("../data/products.json")
+                await axios.post(url,productos)
+                    .then(data =>{
+                      console.log(data);
+                    })
+            }catch(error){
+                console.log(error.response);
+            }
+        },
+        getProducts: async function () {
+            try{
+                const url = "http://localhost:8080/kriterOMNI/KriterRS004/getOP?centro=" + this.selectedFactura.centro + "&tipo=" + this.selectedFactura.tipo
+                    + "&serie=" + this.selectedFactura.serie + "&numero=" + this.selectedFactura.numero;
+                console.log(url);
+                const response = await axios(url)
                 const res = response.data;
                 this.articulos = res;
                 console.log(this.articulos);
@@ -132,14 +158,17 @@
         },
         */
 
-        getFacturas: async function(){
-            try{
-                const response = await axios("../data/facturas.json")
+        getFacturas: async function () {
+            try {
+                const url = "http://localhost:8080/kriterOMNI/KriterRS004/getOrders";
+                const response = await axios(url)
                 const res = response.data;
                 this.facturas = res;
                 console.log(this.facturas)
-            }catch(err){
+
+            } catch (err) {
                 console.log(err);
+
             }
         }
         /*

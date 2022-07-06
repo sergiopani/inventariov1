@@ -8,18 +8,6 @@
         "cantidad": 1,
         "denoart": "Bolsa LA21: 100 X 100 X 102 cm CT",
         "fondo": "X",
-        "lateral": "",
-        "tapa": ""
-    },
-    {
-        "centro": "0",
-        "tipo": 16,
-        "serie": "PB",
-        "numero": 28819,
-        "codiart": "LA21100X110X110",
-        "cantidad": 1,
-        "denoart": "Bolsa LA21: 100 X 110 X 110 cm CT",
-        "fondo": "",
         "lateral": "X",
         "tapa": "X"
     },
@@ -31,7 +19,7 @@
         "codiart": "LA21100X110X110",
         "cantidad": 1,
         "denoart": "Bolsa LA21: 100 X 110 X 110 cm CT",
-        "fondo": "",
+        "fondo": "X",
         "lateral": "X",
         "tapa": "X"
     },
@@ -43,7 +31,19 @@
         "codiart": "LA21100X110X110",
         "cantidad": 1,
         "denoart": "Bolsa LA21: 100 X 110 X 110 cm CT",
-        "fondo": "",
+        "fondo": "X",
+        "lateral": "X",
+        "tapa": "X"
+    },
+    {
+        "centro": "0",
+        "tipo": 16,
+        "serie": "PB",
+        "numero": 28819,
+        "codiart": "LA21100X110X110",
+        "cantidad": 1,
+        "denoart": "Bolsa LA21: 100 X 110 X 110 cm CT",
+        "fondo": "X",
         "lateral": "X",
         "tapa": "X"
     },
@@ -56,7 +56,7 @@
         "cantidad": 1,
         "denoart": "Bolsa LA21: 100 X 100 X 102 cm CT",
         "fondo": "X",
-        "lateral": "",
-        "tapa": ""
+        "lateral": "X",
+        "tapa": "X"
     }
 ]
